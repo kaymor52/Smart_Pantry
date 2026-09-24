@@ -1,11 +1,10 @@
 package com.example.smartpantry;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,14 +21,14 @@ import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity {
-    spDatabase db;
+   private spDatabase db;
     ingredientAdapter adapter;
 
     public static class Ingredient {
        private int id;
-        private String name;
-        private  int quantity;
-        private  String unit;
+        private final String name;
+        private final int quantity;
+        private final String unit;
 
     public Ingredient( String name, int quantity, String unit){
 
@@ -58,11 +57,24 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+    //REFRESH AFTER CLOSING EDIT WINDOW
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if (adapter != null) {
+            adapter.refreshList(db.showIngredients());
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        db = new spDatabase(this);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -92,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                             ingredient.getUnit());
                     Log.d("added items",ingredient.getName());
                 }
+                adapter.refreshList(db.showIngredients());
             } catch (NumberFormatException e) {
                 throw new RuntimeException(e);
             }
@@ -111,20 +124,19 @@ public class MainActivity extends AppCompatActivity {
                     db.deleteIngredient(ingredient.getId());
 
                     adapter.refreshList(db.showIngredients());
+                },
+                ingredient -> {
+                    Intent intent = new Intent(MainActivity.this, EditIngredientActivity.class);
+
+                    intent.putExtra("ingredient_id", ingredient.getId());
+                    intent.putExtra("ingredient_name", ingredient.getName());
+                    intent.putExtra("ingredient_quantity", ingredient.getQuantity());
+                    intent.putExtra("ingredient_unit", ingredient.getUnit());
+
+                    startActivity(intent);
                 }
         );
 
         recyclerView.setAdapter(adapter);
-
-
-    }
-
-    public void displayIngredients(View v) {
-
-        TextView text = findViewById(R.id.ingredientUnit);
-
-        Button testbutton = findViewById(R.id.delete);
-
-
     }
 }

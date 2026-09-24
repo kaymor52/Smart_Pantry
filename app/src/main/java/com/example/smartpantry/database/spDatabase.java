@@ -5,11 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.smartpantry.MainActivity;
+
 import com.example.smartpantry.MainActivity.Ingredient;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class spDatabase {
 
@@ -53,7 +53,7 @@ public class spDatabase {
 
 
         }
-
+        c.close();
          return ingredientList;
     }
 
@@ -62,6 +62,23 @@ public class spDatabase {
 
         db.delete(
                 "ingredient",
+                "ingredient_id = ?",
+                new String[]{String.valueOf(id)}
+        );
+    }
+    public void updateIngredient(int id, String name, int quantity, String unit, String expiryDate) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+
+        values.put("ingredient_name", name);
+        values.put("quantity", quantity);
+        values.put("unit", unit);
+        values.put("expiry_date",expiryDate);
+
+        db.update(
+                "ingredient",
+                values,
                 "ingredient_id = ?",
                 new String[]{String.valueOf(id)}
         );

@@ -3,7 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    >
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -11,8 +14,10 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:paddingHorizontal="8dp"
-        android:paddingVertical="4dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -44,27 +49,34 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/edit"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="25dp"
             android:minWidth="0dp"
             android:minHeight="0dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="Edit"
-            android:textSize="10sp"
-            app:cornerRadius="5dp" />
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="@string/edit"
+            android:textAllCaps="false"
+            android:textSize="9sp"
+            app:cornerRadius="4dp" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/delete"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
+            android:layout_height="25dp"
+            android:layout_marginStart="4dp"
             android:minWidth="0dp"
             android:minHeight="0dp"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
-            android:text="Delete"
-            android:textSize="10sp"
-            app:cornerRadius="5dp" />
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
+            android:paddingStart="6dp"
+            android:paddingEnd="6dp"
+            android:text="@string/delete"
+            android:textAllCaps="false"
+            android:textSize="9sp"
+            app:cornerRadius="4dp" />
+
 
     </LinearLayout>
 

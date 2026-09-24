@@ -6,4 +6,7 @@
     <string name="quantity">Quantity</string>
     <string name="ingredientname">IngredientName</string>
     <string name="add_ingredient">Add Ingredient</string>
+    <string name="name">Name</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 </resources>

@@ -2,14 +2,16 @@ package com.example.smartpantry;
 
 
 import android.util.Log;
-import android.view.*;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.google.android.material.button.MaterialButton;
 import com.example.smartpantry.MainActivity.Ingredient;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
 
@@ -19,17 +21,21 @@ public class ingredientAdapter extends RecyclerView.Adapter<ingredientAdapter.My
         void onDeleteClick(Ingredient ingredient);
     }
 
+    public interface OnEditClickListener {
+        void onEditClick(Ingredient ingredient);
+    }
     private List<Ingredient> ingredientList;
     private OnDeleteClickListener deleteListener;
-
+    private OnEditClickListener editListener;
     public ingredientAdapter(List<Ingredient> ingredientList) {
         this.ingredientList = ingredientList;
     }
 
-    public ingredientAdapter(List<Ingredient> ingredientList, OnDeleteClickListener deleteListener) {
+    public ingredientAdapter(List<Ingredient> ingredientList, OnDeleteClickListener deleteListener, OnEditClickListener editListener) {
 
         this.ingredientList = ingredientList;
         this.deleteListener = deleteListener;
+        this.editListener = editListener;
     }
 
     @NonNull
@@ -66,6 +72,19 @@ public class ingredientAdapter extends RecyclerView.Adapter<ingredientAdapter.My
                 Log.d("DELETE", "deleteListener is NULL");
             }
         });
+
+        holder.editButton.setOnClickListener(v -> {
+
+            Log.d("EDIT", "Button clicked: " + ingredientItems.getName());
+            Log.d("EDIT", "ID: " + ingredientItems.getId());
+
+            if (editListener != null) {
+                Log.d("EDIT", "Sending ingredient to MainActivity");
+                editListener.onEditClick(ingredientItems);
+            } else {
+                Log.d("EDIT", "editListener is NULL");
+            }
+        });
     }
 
     @Override
@@ -84,6 +103,7 @@ public class ingredientAdapter extends RecyclerView.Adapter<ingredientAdapter.My
         TextView ingredientQuantity;
         TextView ingredientUnit;
         MaterialButton deleteButton;
+        MaterialButton editButton;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -95,6 +115,8 @@ public class ingredientAdapter extends RecyclerView.Adapter<ingredientAdapter.My
             ingredientUnit = itemView.findViewById(R.id.ingredientUnit);
 
             deleteButton = itemView.findViewById(R.id.delete);
+
+            editButton = itemView.findViewById(R.id.edit);
         }
     }
 }
