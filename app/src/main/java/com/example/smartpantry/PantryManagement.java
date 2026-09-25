@@ -6,21 +6,18 @@ import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartpantry.database.spDatabase;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity {
+public class PantryManagement extends AppCompatActivity {
    private spDatabase db;
     ingredientAdapter adapter;
 
@@ -72,15 +69,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         db = new spDatabase(this);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_main);
-
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-
+        setContentView(R.layout.pantry_management);
         db = new spDatabase(this);
 
         Button addButton = findViewById(R.id.addIngredientButton);
@@ -93,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 EditText unit = findViewById(R.id.unitsTxt);
             //TODO ADD INPUT RULES ------------------->>
                 ingredients.add(new Ingredient(
-                        name.getText().toString(),
+                             name.getText().toString(),
                         Integer.parseInt(quantity.getText().toString()),
                         unit.getText().toString()));
 
@@ -111,6 +100,37 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+        BottomNavigationView bottomNavigation = findViewById(R.id.bottomNav);
+
+        bottomNavigation.inflateMenu(R.menu.nav_menu);
+
+        bottomNavigation.setOnItemSelectedListener(item -> {
+
+            int id = item.getItemId();
+
+            if (id == R.id.nav_pantry) {
+                startActivity(new Intent(PantryManagement.this, pantryList.class));
+                return true;
+            }
+
+            if (id == R.id.nav_edit) {
+                return true;
+            }
+
+            if (id == R.id.nav_recipes) {
+                startActivity(new Intent(PantryManagement.this, SuggestedRecipesActivity.class));
+                return true;
+            }
+
+            if (id == R.id.nav_settings) {
+                startActivity(new Intent(PantryManagement.this, SettingsActivity.class));
+                return true;
+            }
+
+            return false;
+        });
+
+        bottomNavigation.setSelectedItemId(R.id.nav_edit);
       //RECYCLE VIEW ======================================================
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
@@ -126,7 +146,7 @@ public class MainActivity extends AppCompatActivity {
                     adapter.refreshList(db.showIngredients());
                 },
                 ingredient -> {
-                    Intent intent = new Intent(MainActivity.this, EditIngredientActivity.class);
+                    Intent intent = new Intent(PantryManagement.this, EditIngredientActivity.class);
 
                     intent.putExtra("ingredient_id", ingredient.getId());
                     intent.putExtra("ingredient_name", ingredient.getName());

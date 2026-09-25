@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 
-import com.example.smartpantry.MainActivity.Ingredient;
+import com.example.smartpantry.PantryManagement.Ingredient;
 
 import java.util.ArrayList;
 

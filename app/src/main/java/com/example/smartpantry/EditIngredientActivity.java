@@ -43,7 +43,7 @@ public class EditIngredientActivity extends AppCompatActivity {
         EditText quantityEdit = findViewById(R.id.quantityEditTxt);
         EditText unitEdit = findViewById(R.id.unitEditTxt);
         EditText dateEdit = findViewById(R.id.expiryDateEditTxt);
-//      SET CURRENT VALUE IN TEXT BOXES
+//      SET CURRENT VALUES IN TEXT BOXES
         nameEdit.setText(name);
         quantityEdit.setText(String.valueOf(quantity));
         unitEdit.setText(unit);
