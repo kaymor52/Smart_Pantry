@@ -4,16 +4,23 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.smartpantry.database.spDatabase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class pantryList extends AppCompatActivity {
+import java.util.List;
+
+public class PantryHome extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pantry_list);
+        spDatabase db = new spDatabase(this);
 
+
+        setContentView(R.layout.activity_pantry_home);
         BottomNavigationView bottomNavigation = findViewById(R.id.bottomNav);
 
         bottomNavigation.inflateMenu(R.menu.nav_menu);
@@ -27,17 +34,17 @@ public class pantryList extends AppCompatActivity {
             }
 
             if (id == R.id.nav_edit) {
-                startActivity(new Intent(pantryList.this, PantryManagement.class));
+                startActivity(new Intent(PantryHome.this, PantryManagement.class));
                 return true;
             }
 
             if (id == R.id.nav_recipes) {
-                startActivity(new Intent(pantryList.this, SuggestedRecipesActivity.class));
+                startActivity(new Intent(PantryHome.this, SuggestedRecipesActivity.class));
                 return true;
             }
 
             if (id == R.id.nav_settings) {
-                startActivity(new Intent(pantryList.this, SettingsActivity.class));
+                startActivity(new Intent(PantryHome.this, SettingsActivity.class));
                 return true;
             }
 
@@ -46,5 +53,15 @@ public class pantryList extends AppCompatActivity {
 
         bottomNavigation.setSelectedItemId(R.id.nav_pantry);
 
+
+        RecyclerView recyclerView = findViewById(R.id.pantry_recyclerView_home);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        List<PantryManagement.Ingredient> ingredients = db.showIngredients();
+
+        Pantry_list_adapter adapter = new Pantry_list_adapter(ingredients);
+
+        recyclerView.setAdapter(adapter);
     }
 }

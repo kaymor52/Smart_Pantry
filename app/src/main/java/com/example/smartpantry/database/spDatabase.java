@@ -19,7 +19,7 @@ public class spDatabase {
         dbHelper = new spHelper(context, null, null, 1);
     }
 
-    public void addIngredient(String name, int quantity, String unit) {
+    public void addIngredient(String name, int quantity, String unit, String expire) {
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
@@ -27,6 +27,7 @@ public class spDatabase {
         values.put("ingredient_name",name);
         values.put("quantity", quantity);
         values.put("unit", unit);
+        values.put("expiry_date",expire);
 
         db.insert("ingredient", null, values);
 
@@ -35,7 +36,7 @@ public class spDatabase {
     public ArrayList<Ingredient> showIngredients(){
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
-        String[] contentFormat ={"ingredient_id","ingredient_name","quantity","unit"};
+        String[] contentFormat ={"ingredient_id","ingredient_name","quantity","unit","expiry_date"};
         Cursor c = db.query("ingredient",contentFormat,null,null,null,null,"ingredient_name");
 
 
@@ -46,7 +47,8 @@ public class spDatabase {
                     c.getInt(0),
                     c.getString(1),
                     c.getInt(2),
-                    c.getString(3)
+                    c.getString(3),
+                    c.getString(4)
             );
 
             ingredientList.add(ingredient);

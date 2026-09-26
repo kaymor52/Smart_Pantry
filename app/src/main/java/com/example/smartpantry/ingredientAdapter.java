@@ -1,6 +1,5 @@
 package com.example.smartpantry;
 
-
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,14 +23,19 @@ public class ingredientAdapter extends RecyclerView.Adapter<ingredientAdapter.My
     public interface OnEditClickListener {
         void onEditClick(Ingredient ingredient);
     }
+
     private List<Ingredient> ingredientList;
     private OnDeleteClickListener deleteListener;
     private OnEditClickListener editListener;
+
     public ingredientAdapter(List<Ingredient> ingredientList) {
         this.ingredientList = ingredientList;
     }
 
-    public ingredientAdapter(List<Ingredient> ingredientList, OnDeleteClickListener deleteListener, OnEditClickListener editListener) {
+    public ingredientAdapter(
+            List<Ingredient> ingredientList,
+            OnDeleteClickListener deleteListener,
+            OnEditClickListener editListener) {
 
         this.ingredientList = ingredientList;
         this.deleteListener = deleteListener;
@@ -40,15 +44,20 @@ public class ingredientAdapter extends RecyclerView.Adapter<ingredientAdapter.My
 
     @NonNull
     @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(
+            @NonNull ViewGroup parent,
+            int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.ingredient_item_layout, parent, false);
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.ingredient_item_layout, parent, false);
 
         return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(
+            @NonNull MyViewHolder holder,
+            int position) {
 
         Ingredient ingredientItems = ingredientList.get(position);
 
@@ -56,20 +65,21 @@ public class ingredientAdapter extends RecyclerView.Adapter<ingredientAdapter.My
 
         holder.ingredientName.setText(ingredientItems.getName());
 
-        holder.ingredientQuantity.setText(String.valueOf(ingredientItems.getQuantity()));
+        holder.ingredientQuantity.setText(
+                String.valueOf(ingredientItems.getQuantity())
+        );
 
         holder.ingredientUnit.setText(ingredientItems.getUnit());
 
+        holder.ingredientExpiry.setText(ingredientItems.getExpiry());
+
         holder.deleteButton.setOnClickListener(v -> {
 
-            Log.d("DELETE", "Button clicked: " + ingredientItems.getName());
+            Log.d("DELETE", "Button Clicked: " + ingredientItems.getName());
             Log.d("DELETE", "ID: " + ingredientItems.getId());
 
             if (deleteListener != null) {
-                Log.d("DELETE", "Sending ingredient to MainActivity");
                 deleteListener.onDeleteClick(ingredientItems);
-            } else {
-                Log.d("DELETE", "deleteListener is NULL");
             }
         });
 
@@ -79,10 +89,7 @@ public class ingredientAdapter extends RecyclerView.Adapter<ingredientAdapter.My
             Log.d("EDIT", "ID: " + ingredientItems.getId());
 
             if (editListener != null) {
-                Log.d("EDIT", "Sending ingredient to MainActivity");
                 editListener.onEditClick(ingredientItems);
-            } else {
-                Log.d("EDIT", "editListener is NULL");
             }
         });
     }
@@ -102,21 +109,32 @@ public class ingredientAdapter extends RecyclerView.Adapter<ingredientAdapter.My
         TextView ingredientName;
         TextView ingredientQuantity;
         TextView ingredientUnit;
+        TextView ingredientExpiry;
+
         MaterialButton deleteButton;
         MaterialButton editButton;
 
         public MyViewHolder(@NonNull View itemView) {
+
             super(itemView);
 
-            ingredientName = itemView.findViewById(R.id.ingredientName);
+            ingredientName =
+                    itemView.findViewById(R.id.ingredientName);
 
-            ingredientQuantity = itemView.findViewById(R.id.ingredientQuantity);
+            ingredientQuantity =
+                    itemView.findViewById(R.id.ingredientQuantity);
 
-            ingredientUnit = itemView.findViewById(R.id.ingredientUnit);
+            ingredientUnit =
+                    itemView.findViewById(R.id.ingredientUnit);
 
-            deleteButton = itemView.findViewById(R.id.delete);
+            ingredientExpiry =
+                    itemView.findViewById(R.id.ingredientExpire);
 
-            editButton = itemView.findViewById(R.id.edit);
+            deleteButton =
+                    itemView.findViewById(R.id.delete);
+
+            editButton =
+                    itemView.findViewById(R.id.edit);
         }
     }
 }

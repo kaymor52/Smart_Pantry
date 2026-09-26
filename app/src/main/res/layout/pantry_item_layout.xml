@@ -11,16 +11,20 @@
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:background="#D1D1D1"
         android:gravity="center_vertical"
+        android:orientation="horizontal"
         android:paddingStart="8dp"
-        android:paddingEnd="8dp"
         android:paddingTop="4dp"
+        android:paddingEnd="8dp"
         android:paddingBottom="4dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:cornerRadius="10dp"
+        >
 
         <TextView
             android:id="@+id/ingredientName"
@@ -38,15 +42,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:paddingStart="0dp"
-            android:paddingEnd="20dp"
+            android:paddingEnd="80dp"
             android:text="expire DAte" />
 
         <TextView
             android:id="@+id/ingredientQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingEnd="8dp"
+            android:paddingEnd="1dp"
             android:text="@string/quantity"
             android:textColor="#000000" />
 
@@ -54,45 +57,8 @@
             android:id="@+id/ingredientUnit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingEnd="8dp"
             android:text="@string/unit"
             android:textColor="#000000" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/edit"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:background="#BD79D8"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:paddingStart="6dp"
-            android:paddingEnd="6dp"
-            android:text="@string/edit"
-            android:textAllCaps="false"
-            android:textSize="9sp"
-            app:backgroundTint="#8184D3"
-            app:cornerRadius="4dp" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/delete"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:layout_marginStart="4dp"
-            android:background="#BD79D8"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:paddingStart="6dp"
-            android:paddingEnd="6dp"
-            android:text="@string/delete"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="9sp"
-            app:backgroundTint="#8184D3"
-            app:cornerRadius="4dp" />
 
 
     </LinearLayout>

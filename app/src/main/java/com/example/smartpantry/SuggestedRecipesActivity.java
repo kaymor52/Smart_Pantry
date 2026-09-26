@@ -24,7 +24,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.nav_pantry) {
-                startActivity(new Intent(SuggestedRecipesActivity.this, pantryList.class));
+                startActivity(new Intent(SuggestedRecipesActivity.this, PantryHome.class));
                 return true;
             }
 
@@ -44,6 +44,6 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
 
             return false;
         });
-
+        bottomNavigation.setSelectedItemId(R.id.nav_recipes);
     }
 }

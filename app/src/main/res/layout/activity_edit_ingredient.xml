@@ -103,6 +103,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/expiryLabel" />
 
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="13dp"
+        android:text="TextView"
+        android:textColor="#C31717"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/cancelButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/expiryDateEditTxt"
+        app:layout_constraintTop_toBottomOf="@+id/expiryDateEditTxt" />
+
     <Button
         android:id="@+id/cancelButton"
         android:layout_width="wrap_content"

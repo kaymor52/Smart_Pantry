@@ -12,12 +12,7 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_settings);
-
-
-
-
         BottomNavigationView bottomNavigation = findViewById(R.id.bottomNav);
 
         bottomNavigation.inflateMenu(R.menu.nav_menu);
@@ -27,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.nav_pantry) {
-                startActivity(new Intent(SettingsActivity.this, pantryList.class));
+                startActivity(new Intent(SettingsActivity.this, PantryHome.class));
                 return true;
             }
 
@@ -47,6 +42,8 @@ public class SettingsActivity extends AppCompatActivity {
 
             return false;
         });
+
+        bottomNavigation.setSelectedItemId(R.id.nav_settings);
 
     }
 }
