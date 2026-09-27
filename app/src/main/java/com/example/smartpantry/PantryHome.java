@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.smartpantry.adapters.Pantry_list_adapter;
 import com.example.smartpantry.database.spDatabase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -18,13 +19,14 @@ public class PantryHome extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         spDatabase db = new spDatabase(this);
-
-
         setContentView(R.layout.activity_pantry_home);
+
+//
+
+
+//      NAVIGATION BAR ======================================================
         BottomNavigationView bottomNavigation = findViewById(R.id.bottomNav);
-
         bottomNavigation.inflateMenu(R.menu.nav_menu);
-
         bottomNavigation.setOnItemSelectedListener(item -> {
 
             int id = item.getItemId();
@@ -50,12 +52,9 @@ public class PantryHome extends AppCompatActivity {
 
             return false;
         });
-
         bottomNavigation.setSelectedItemId(R.id.nav_pantry);
 
-
         RecyclerView recyclerView = findViewById(R.id.pantry_recyclerView_home);
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<PantryManagement.Ingredient> ingredients = db.showIngredients();

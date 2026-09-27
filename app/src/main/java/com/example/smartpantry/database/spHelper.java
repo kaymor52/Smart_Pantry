@@ -42,314 +42,633 @@ public class spHelper extends SQLiteOpenHelper {
                 "recipe_id INTEGER," +
                 "FOREIGN KEY(recipe_id) REFERENCES recipe(recipe_id))");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "0, 'Fettuccine Alfredo', 30, 5, " +
-                "'Step 1: Cook pasta according to package instructions in a large pot of boiling water and salt.\n" +
-                "Step 2: Add heavy cream and butter to a large skillet over medium heat until the cream bubbles and the butter melts.\n" +
-                "Step 3: Whisk in parmesan and add seasoning (salt and black pepper).\n" +
-                "Step 4: Let the sauce thicken slightly and then add the pasta and toss until coated in sauce.\n" +
-                "Step 5: Garnish with parsley, and it''s ready.', " +
+
+        // Fettuccine Alfredo
+        db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                "0, " +
+                "'Fettuccine Alfredo', " +
+                "'15 minutes', " +
+                "'10 minutes', " +
+                "'Cook the fettuccine. Prepare the sauce using butter, heavy cream and Parmesan. Season with salt and black pepper, then combine with the pasta and garnish with parsley.', " +
                 "'fettuccine_alfredo')");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Fettuccine', 450, 'g', 0)," +
-                "('Heavy Cream', 1, 'cup', 0)," +
-                "('Butter', 4, 'tbsp', 0)," +
-                "('Parmesan', 1, 'cup', 0)," +
-                "('Salt', 1, 'pinch', 0)," +
-                "('Black Pepper', 1, 'pinch', 0)," +
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Fettuccine', 450, 'g', 0)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Heavy Cream', 240, 'ml', 0)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Butter', 4, 'tbsp', 0)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Parmesan', 1, 'cup', 0)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Salt', 1, 'pinch', 0)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Black Pepper', 1, 'pinch', 0)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
                 "('Parsley', 1, 'amount', 0)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "1, 'Beef Mechado', 60, 15, " +
-                "'Cook the beef with the garlic, onion, tomato puree, water, olive oil, lemon, potatoes, soy sauce, black pepper, bay leaves and salt until tender.', " +
+
+        // Beef Mechado
+        db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                "1, " +
+                "'Beef Mechado', " +
+                "'60 minutes', " +
+                "'20 minutes', " +
+                "'Cook the beef with the listed ingredients until tender and serve with the potatoes.', " +
                 "'beef_mechado')");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Garlic', 3, 'cloves', 1)," +
-                "('Onion', 1, 'sliced', 1)," +
-                "('Beef', 2, 'lbs', 1)," +
-                "('Tomato Puree', 8, 'oz', 1)," +
-                "('Water', 1, 'cup', 1)," +
-                "('Olive Oil', 3, 'tbsp', 1)," +
-                "('Lemon', 1, 'slice', 1)," +
-                "('Potatoes', 1, 'large', 1)," +
-                "('Soy Sauce', 0.25, 'cup', 1)," +
-                "('Black Pepper', 0.5, 'tsp', 1)," +
-                "('Bay Leaves', 2, 'leaves', 1)," +
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Garlic', 3, 'cloves', 1)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Onion', 1, 'sliced', 1)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Beef', 907.184, 'g', 1)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Tomato Puree', 8, 'oz', 1)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Water', 240, 'ml', 1)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Olive Oil', 45, 'ml', 1)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Lemon', 1, 'slice', 1)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Potatoes', 1, 'large', 1)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Soy Sauce', 60, 'ml', 1)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Black Pepper', 0.5, 'tsp', 1)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Bay Leaves', 2, 'leaves', 1)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
                 "('Salt', 1, 'to taste', 1)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "2, 'Bistek', 30, 10, " +
-                "'Marinate the beef with soy sauce and lemon. Cook the beef with garlic, onion, olive oil, water and salt until done.', " +
+
+        // Bistek
+        db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                "2, " +
+                "'Bistek', " +
+                "'30 minutes', " +
+                "'15 minutes', " +
+                "'Cook the beef with soy sauce, lemon, garlic and onions until tender.', " +
                 "'bistek')");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Beef', 1, 'lb', 2)," +
-                "('Soy Sauce', 5, 'tbsp', 2)," +
-                "('Lemon', 1, 'whole', 2)," +
-                "('Garlic', 3, 'cloves', 2)," +
-                "('Onion', 3, 'parts', 2)," +
-                "('Olive Oil', 4, 'tbsp', 2)," +
-                "('Water', 1, 'cup', 2)," +
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Beef', 453.592, 'g', 2)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Soy Sauce', 75, 'ml', 2)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Lemon', 1, 'whole', 2)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Garlic', 3, 'cloves', 2)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Onion', 3, 'parts', 2)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Olive Oil', 60, 'ml', 2)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Water', 240, 'ml', 2)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
                 "('Salt', 1, 'pinch', 2)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "3, 'Crispy Eggplant', 20, 10, " +
-                "'Coat the eggplant in egg and breadcrumbs mixed with sesame seeds and seasoning. Cook until crispy.', " +
+
+        // Crispy Eggplant
+        db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                "3, " +
+                "'Crispy Eggplant', " +
+                "'30 minutes', " +
+                "'15 minutes', " +
+                "'Coat the eggplant in egg, breadcrumbs and sesame seeds, then cook until crispy.', " +
                 "'crispy_eggplant')");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Egg Plants', 1, 'large', 3)," +
-                "('Breadcrumbs', 1, 'cup', 3)," +
-                "('Sesame Seed', 50, 'g', 3)," +
-                "('Eggs', 2, 'whole', 3)," +
-                "('Salt', 1, 'to taste', 3)," +
-                "('Pepper', 1, 'to taste', 3)," +
-                "('Vegetable Oil', 1, 'for frying', 3)");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Egg Plants', 1, 'large', 3)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "4, 'Bread omelette', 10, 5, " +
-                "'Make the omelette with the bread and eggs, season with salt and enjoy.', " +
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Breadcrumbs', 1, 'cup', 3)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Sesame Seed', 50, 'g', 3)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Eggs', 2, 'whole', 3)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Salt', 1, 'to taste', 3)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Pepper', 1, 'to taste', 3)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Vegetable Oil', 1, 'for frying', 3");
+
+
+        // Bread Omelette
+        db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                "4, " +
+                "'Bread Omelette', " +
+                "'10 minutes', " +
+                "'5 minutes', " +
+                "'Make and enjoy.', " +
                 "'bread_omelette')");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Bread', 2, 'pieces', 4)," +
-                "('Egg', 2, 'whole', 4)," +
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Bread', 2, 'pieces', 4)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Egg', 2, 'whole', 4)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
                 "('Salt', 0.5, 'amount', 4)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "5, 'Blini Pancakes', 20, 15, " +
-                "'Combine the buckwheat, flour, salt, yeast and milk. Add butter and separated egg, then cook the pancakes until done.', " +
+
+        // Blini Pancakes
+        db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                "5, " +
+                "'Blini Pancakes', " +
+                "'20 minutes', " +
+                "'15 minutes', " +
+                "'Prepare the batter using buckwheat, flour, salt, yeast, milk, butter and egg, then cook the pancakes.', " +
                 "'blini_pancakes')");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Buckwheat', 0.5, 'cup', 5)," +
-                "('Flour', 0.67, 'cup', 5)," +
-                "('Salt', 0.5, 'tsp', 5)," +
-                "('Yeast', 1, 'tsp', 5)," +
-                "('Milk', 1, 'cup', 5)," +
-                "('Butter', 2, 'tbsp', 5)," +
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Buckwheat', 0.5, 'cup', 5)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Flour', 0.6667, 'cup', 5)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Salt', 0.5, 'tsp', 5)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Yeast', 1, 'tsp', 5)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Milk', 240, 'ml', 5)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Butter', 2, 'tbsp', 5)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
                 "('Egg', 1, 'whole', 5)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "6, 'Potato Salad (Olivier Salad)', 30, 20, " +
-                "'Cook the potatoes, carrots and eggs. Combine with sausages, dill, peas, onions, vinegar, salt and mayonnaise.', " +
+
+        // Potato Salad
+        db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                "6, " +
+                "'Potato Salad', " +
+                "'30 minutes', " +
+                "'20 minutes', " +
+                "'Prepare the potatoes, carrots, eggs and other ingredients, then combine with mayonnaise.', " +
                 "'potato_salad')");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Potatoes', 4, 'pieces', 6)," +
-                "('Carrots', 3, 'pieces', 6)," +
-                "('Salt', 1, 'tbsp', 6)," +
-                "('White Wine Vinegar', 0.5, 'tbsp', 6)," +
-                "('Eggs', 4, 'whole', 6)," +
-                "('Sausages', 7, 'oz', 6)," +
-                "('Dill', 4, 'oz', 6)," +
-                "('Peas', 1, 'can', 6)," +
-                "('Onions', 4, 'pieces', 6)," +
-                "('Mayonnaise', 1, 'cup', 6)");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Potatoes', 4, 'pieces', 6)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "7, 'Mini chilli beef pies', 45, 20, " +
-                "'Prepare the beef filling with onion, chilli powder, cumin, minced beef, tomato puree, beef stock, cinnamon, kidney beans and potatoes. Fill pastry and bake until cooked.', " +
-                "'mini_chilli_beef_pies')");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Carrots', 3, 'pieces', 6)");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Ready rolled shortcrust pastry', 450, 'g', 7)," +
-                "('Sunflower Oil', 1, 'tbsp', 7)," +
-                "('Onion', 1, 'small', 7)," +
-                "('Hot Chilli Powder', 2, 'tsp', 7)," +
-                "('Ground Cumin', 2, 'tsp', 7)," +
-                "('Minced Beef', 250, 'g', 7)," +
-                "('Tomato Puree', 85, 'g', 7)," +
-                "('Beef Stock', 150, 'ml', 7)," +
-                "('Ground Cinnamon', 1, 'pinch', 7)," +
-                "('Kidney Beans', 200, 'g', 7)," +
-                "('Potatoes', 1, 'large', 7)," +
-                "('Sour Cream', 3, 'tbsp', 7)," +
-                "('Chopped Chive', 2, 'tbsp', 7)");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Salt', 1, 'tbsp', 6)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "8, 'Sticky Chicken', 40, 10, " +
-                "'Combine soy sauce, honey, olive oil, tomato puree and Dijon mustard. Coat the chicken drumsticks and cook until done.', " +
-                "'sticky_chicken')");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('White Wine Vinegar', 0.5, 'tbsp', 6)");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Chicken drumsticks', 8, 'pieces', 8)," +
-                "('Soy Sauce', 2, 'tbsp', 8)," +
-                "('Honey', 1, 'tbsp', 8)," +
-                "('Olive Oil', 1, 'tbsp', 8)," +
-                "('Tomato Puree', 1, 'tsp', 8)," +
-                "('Dijon Mustard', 1, 'tbsp', 8)");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Eggs', 4, 'whole', 6)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "9, 'Kenyan Beef Curry', 60, 20, " +
-                "'Cook the beef with garlic, ginger, oil, onions, tomatoes, paprika, black pepper, curry powder, tomato puree, salt, chilli and cilantro.', " +
-                "'kenyan_beef_curry')");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Sausages', 198.45, 'g', 6)");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Water', 4, 'cups', 9)," +
-                "('Sirloin Steak tips', 2, 'lbs', 9)," +
-                "('Garlic Clove', 4, 'cloves', 9)," +
-                "('Ground Ginger', 2, 'tsp', 9)," +
-                "('Oil', 2, 'tbsp', 9)," +
-                "('Red Onions', 2, 'medium', 9)," +
-                "('Tomato', 4, 'pieces', 9)," +
-                "('Paprika', 2, 'tbsp', 9)," +
-                "('Black Pepper', 0.5, 'tsp', 9)," +
-                "('Curry Powder', 2, 'tsp', 9)," +
-                "('Tomato Puree', 4, 'tbsp', 9)," +
-                "('Salt', 1, 'dash', 9)," +
-                "('Chilli', 1, 'piece', 9)," +
-                "('Cilantro leaves', 1, 'amount', 9)");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Dill', 113.4, 'g', 6)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "10, 'Sukuma Wiki', 20, 10, " +
-                "'Cook the onions in oil, add kale and seasoning, then add double cream and cook until ready.', " +
-                "'sukuma_wiki')");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Peas', 1, 'can', 6)");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Oil', 2, 'tbsp', 10)," +
-                "('Red Onions', 2, 'medium', 10)," +
-                "('Kale', 1, 'lb', 10)," +
-                "('Salt', 1, 'dash', 10)," +
-                "('Double Cream', 1, 'cup', 10)");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Onions', 4, 'pieces', 6)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "11, 'Cinnamon buns', 25, 30, " +
-                "'Prepare the dough using butter, milk, salt, flour, yeast, cardamom, sugar and eggs. Prepare the filling with butter, sugar and cinnamon, then shape and bake the buns.', " +
-                "'cinnamon_buns')");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                        "('Mayonnaise', 240, 'ml', 6)");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Unsalted Butter', 175, 'g', 11)," +
-                "('Milk', 200, 'ml', 11)," +
-                "('Salt', 1, 'tsp', 11)," +
-                "('Flour', 250, 'g', 11)," +
-                "('Strong White Flour', 250, 'g', 11)," +
-                "('Fast action yeast', 1.5, 'tsp', 11)," +
-                "('Cardamom', 1, 'tsp', 11)," +
-                "('Caster Sugar', 101, 'g', 11)," +
-                "('Egg', 3, 'whole', 11)," +
-                "('Olive Oil', 1, 'dash', 11)," +
-                "('Cinnamon', 2, 'tbsp', 11)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "12, 'Karbonader (Lean Beef Patties) with Caramelized Onions', 30, 15, " +
-                "'Cook the onions with butter until caramelized. Mix ground beef with salt, pepper, nutmeg, cornstarch and water. Shape into patties and cook.', " +
-                "'karbonader')");
+                // Mini Chilli Beef Pies
+                db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                        "7, " +
+                        "'Mini Chilli Beef Pies', " +
+                        "'45 minutes', " +
+                        "'20 minutes', " +
+                        "'Prepare the beef filling with the spices and vegetables, then fill the pastry and bake.', " +
+                        "'mini_chilli_beef_pies')");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Onion', 2, 'pieces', 12)," +
-                "('Butter', 3, 'tbsp', 12)," +
-                "('Ground Beef', 1, 'lb', 12)," +
-                "('Salt', 0.5, 'tsp', 12)," +
-                "('Pepper', 0.5, 'tsp', 12)," +
-                "('Nutmeg', 0.5, 'tsp', 12)," +
-                "('Cornstarch', 0.5, 'tbsp', 12)," +
-                "('Water', 50, 'ml', 12)");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Ready rolled shortcrust pastry', 450, 'g', 7)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "13, 'Jamon & wild garlic croquetas', 30, 30, " +
-                "'Prepare a mixture using wild garlic, milk, olive oil, flour, manchego and jamón ibérico. Shape into croquetas, coat with egg and breadcrumbs, then cook until golden.', " +
-                "'jamon_wild_garlic_croquetas')");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Sunflower Oil', 15, 'ml', 7)");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Wild Garlic Leaves', 150, 'g', 13)," +
-                "('Milk', 350, 'g', 13)," +
-                "('Olive Oil', 45, 'g', 13)," +
-                "('Flour', 65, 'g', 13)," +
-                "('manchego', 35, 'g', 13)," +
-                "('jamón ibérico', 80, 'g', 13)," +
-                "('Egg', 1, 'whole', 13)," +
-                "('Breadcrumbs', 75, 'g', 13)," +
-                "('Vegetable Oil', 1, 'L', 13)");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Onion', 1, 'small', 7)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "14, 'Churros', 30, 20, " +
-                "'Prepare the churro mixture using butter, vanilla, flour and baking powder. Serve with a chocolate sauce made using dark chocolate, cream, milk and golden syrup. Finish with caster sugar and cinnamon.', " +
-                "'churros')");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Hot Chilli Powder', 2, 'tsp', 7)");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Butter', 50, 'g', 14)," +
-                "('Vanilla Extract', 0.5, 'tsp', 14)," +
-                "('Plain Flour', 250, 'g', 14)," +
-                "('Baking Powder', 1, 'tsp', 14)," +
-                "('Sunflower Oil', 1, 'L', 14)," +
-                "('Bread', 2, 'pieces', 14)," +
-                "('Dark Chocolate', 200, 'g', 14)," +
-                "('Double Cream', 100, 'ml', 14)," +
-                "('Milk', 100, 'ml', 14)," +
-                "('Golden Syrup', 3, 'tbsp', 14)," +
-                "('Caster Sugar', 100, 'g', 14)," +
-                "('Cinnamon', 2, 'tsp', 14)");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Ground Cumin', 2, 'tsp', 7)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "15, 'Chorizo, potato & cheese omelette', 20, 10, " +
-                "'Cook the potato and chorizo, add beaten eggs, parsley and cheddar cheese, then cook until the omelette is set.', " +
-                "'chorizo_potato_cheese_omelette')");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Minced Beef', 250, 'g', 7)");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Potatoes', 1, 'small', 15)," +
-                "('Olive Oil', 1, 'tsp', 15)," +
-                "('Chorizo', 50, 'g', 15)," +
-                "('Egg', 3, 'whole', 15)," +
-                "('Parsley', 1, 'chopped', 15)," +
-                "('Cheddar Cheese', 25, 'g', 15)");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Tomato Puree', 85, 'g', 7)");
 
-        db.execSQL("INSERT INTO recipe " +
-                "(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "16, 'Kentucky Fried Chicken', 40, 20, " +
-                "'Prepare the chicken and coat it with the seasoned flour mixture. Cook until fully done and serve.', " +
-                "'kentucky_fried_chicken')");
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Beef Stock', 150, 'ml', 7)");
 
-        db.execSQL("INSERT INTO recipe_ingredients " +
-                "(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Chicken', 1, 'whole', 16)," +
-                "('Oil', 2, 'quarts', 16)," +
-                "('Egg White', 1, 'whole', 16)," +
-                "('Flour', 1.5, 'cups', 16)," +
-                "('Brown Sugar', 1, 'tbsp', 16)," +
-                "('Salt', 1, 'tbsp', 16)," +
-                "('Paprika', 1, 'tbsp', 16)," +
-                "('Onion Salt', 2, 'tsp', 16)," +
-                "('Chili Powder', 1, 'tsp', 16)," +
-                "('Black Pepper', 1, 'tsp', 16)," +
-                "('Celery Salt', 0.5, 'tsp', 16)," +
-                "('Sage', 0.5, 'tsp', 16)," +
-                "('Garlic Powder', 0.5, 'tsp', 16)," +
-                "('Allspice', 0.5, 'tsp', 16)," +
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Ground Cinnamon', 1, 'pinch', 7)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Kidney Beans', 200, 'g', 7)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Potatoes', 1, 'large', 7)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Sour Cream', 3, 'tbsp', 7)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                        "('Chopped Chive', 2, 'tbsp', 7)");
+
+
+                // Sticky Chicken
+                db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                        "8, " +
+                        "'Sticky Chicken', " +
+                        "'40 minutes', " +
+                        "'10 minutes', " +
+                        "'Mix the sauce ingredients, coat the chicken drumsticks and cook until done.', " +
+                        "'sticky_chicken')");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Chicken drumsticks', 8, 'pieces', 8)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Soy Sauce', 30, 'ml', 8)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Honey', 15, 'ml', 8)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Olive Oil', 15, 'ml', 8)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Tomato Puree', 5, 'ml', 8)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                        "('Dijon Mustard', 15, 'ml', 8)");
+
+
+                // Kenyan Beef Curry
+                db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                        "9, " +
+                        "'Kenyan Beef Curry', " +
+                        "'60 minutes', " +
+                        "'20 minutes', " +
+                        "'Cook the beef with onions, tomatoes, spices and the remaining ingredients until tender.', " +
+                        "'kenyan_beef_curry')");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Water', 960, 'ml', 9)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Sirloin Steak tips', 907.184, 'g', 9)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Garlic Clove', 4, 'cloves', 9)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Ground Ginger', 2, 'tsp', 9)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Oil', 30, 'ml', 9)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Red Onions', 2, 'medium', 9)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Tomato', 4, 'pieces', 9)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Paprika', 2, 'tbsp', 9)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Black Pepper', 0.5, 'tsp', 9)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Curry Powder', 2, 'tsp', 9)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Tomato Puree', 4, 'tbsp', 9)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Salt', 1, 'dash', 9)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Chilli', 1, 'piece', 9)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                        "('Cilantro leaves', 1, 'amount', 9)");
+
+
+                // Sukuma Wiki
+                db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                        "10, " +
+                        "'Sukuma Wiki', " +
+                        "'25 minutes', " +
+                        "'10 minutes', " +
+                        "'Cook the onions and kale with oil, salt and cream until tender.', " +
+                        "'sukuma_wiki')");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Oil', 30, 'ml', 10)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Red Onions', 2, 'medium', 10)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Kale', 453.592, 'g', 10)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Salt', 1, 'dash', 10)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                        "('Double Cream', 240, 'ml', 10)");
+
+
+                // Cinnamon Buns
+                db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                        "11, " +
+                        "'Cinnamon Buns', " +
+                        "'25 minutes', " +
+                        "'30 minutes', " +
+                        "'Prepare the dough, add the cinnamon filling, shape the buns and bake until golden.', " +
+                        "'cinnamon_buns')");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Unsalted Butter', 175, 'g', 11)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Milk', 200, 'ml', 11)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Salt', 1, 'tsp', 11)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Flour', 250, 'g', 11)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Strong White Flour', 250, 'g', 11)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Fast action yeast', 1.5, 'tsp', 11)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Cardamom', 1, 'tsp', 11)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Caster Sugar', 101, 'g', 11)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Egg', 3, 'whole', 11)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Olive Oil', 1, 'dash', 11)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                        "('Cinnamon', 2, 'tbsp', 11)");
+
+
+                // Karbonader
+                db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                        "12, " +
+                        "'Karbonader', " +
+                        "'30 minutes', " +
+                        "'15 minutes', " +
+                        "'Combine the beef with seasoning and other ingredients, form patties and cook until done. Serve with caramelized onions.', " +
+                        "'karbonader')");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Onion', 2, 'pieces', 12)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Butter', 1, 'tbsp', 12)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Ground Beef', 453.592, 'g', 12)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Salt', 0.5, 'tsp', 12)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Pepper', 0.5, 'tsp', 12)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Nutmeg', 0.5, 'tsp', 12)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Cornstarch', 0.5, 'tbsp', 12)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                        "('Water', 50, 'ml', 12)");
+
+
+                // Jamon & Wild Garlic Croquetas
+                db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                        "13, " +
+                        "'Jamon & Wild Garlic Croquetas', " +
+                        "'40 minutes', " +
+                        "'30 minutes', " +
+                        "'Prepare the croqueta mixture, shape into portions, coat with egg and breadcrumbs, then cook.', " +
+                        "'jamon_wild_garlic_croquetas')");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Wild Garlic Leaves', 150, 'g', 13)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Milk', 350, 'g', 13)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Olive Oil', 45, 'g', 13)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Flour', 65, 'g', 13)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('manchego', 35, 'g', 13)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('jamón ibérico', 80, 'g', 13)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Egg', 1, 'whole', 13)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Breadcrumbs', 75, 'g', 13)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                        "('Vegetable Oil', 1000, 'ml', 13)");
+
+
+                // Churros
+                db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                        "14, " +
+                        "'Churros', " +
+                        "'30 minutes', " +
+                        "'20 minutes', " +
+                        "'Prepare the churro mixture and chocolate accompaniment using the listed ingredients.', " +
+                        "'churros')");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Butter', 50, 'g', 14)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Vanilla Extract', 0.5, 'tsp', 14)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Plain Flour', 250, 'g', 14)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Baking Powder', 1, 'tsp', 14)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Sunflower Oil', 1000, 'ml', 14)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Bread', 2, 'pieces', 14)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Dark Chocolate', 200, 'g', 14)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Double Cream', 100, 'ml', 14)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Milk', 100, 'ml', 14)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Golden Syrup', 45, 'ml', 14)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Caster Sugar', 100, 'g', 14)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                        "('Cinnamon', 10, 'ml', 14)");
+
+
+                // Chorizo, Potato & Cheese Omelette
+                db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                        "15, " +
+                        "'Chorizo, Potato & Cheese Omelette', " +
+                        "'25 minutes', " +
+                        "'10 minutes', " +
+                        "'Cook the potato and chorizo, add the eggs and cheese, then cook until the omelette is set.', " +
+                        "'chorizo_potato_cheese_omelette')");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Potatoes', 1, 'small', 15)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Olive Oil', 5, 'ml', 15)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Chorizo', 50, 'g', 15)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Egg', 3, 'whole', 15)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Parsley', 1, 'chopped', 15)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                        "('Cheddar Cheese', 25, 'g', 15)");
+
+
+                // Kentucky Fried Chicken
+                db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                        "16, " +
+                        "'Kentucky Fried Chicken', " +
+                        "'45 minutes', " +
+                        "'20 minutes', " +
+                        "'Prepare the chicken with the listed coating ingredients and cook according to the recipe.', " +
+                        "'kentucky_fried_chicken')");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Chicken', 1, 'whole', 16)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Oil', 1892.706, 'ml', 16)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Egg White', 1, 'whole', 16)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Flour', 1.5, 'cups', 16)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Brown Sugar', 1, 'tbsp', 16)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Salt', 1, 'tbsp', 16)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Paprika', 1, 'tbsp', 16)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Onion Salt', 2, 'tsp', 16)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Chili Powder', 1, 'tsp', 16)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Black Pepper', 1, 'tsp', 16)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Celery Salt', 0.5, 'tsp', 16)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Sage', 0.5, 'tsp', 16)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Garlic Powder', 0.5, 'tsp', 16)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Allspice', 0.5, 'tsp', 16)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
                 "('Oregano', 0.5, 'tsp', 16)");
     }
 

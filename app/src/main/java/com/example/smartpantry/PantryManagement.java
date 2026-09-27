@@ -15,6 +15,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.smartpantry.adapters.ingredientAdapter;
 import com.example.smartpantry.database.spDatabase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -90,7 +91,7 @@ public class PantryManagement extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         db = new spDatabase(this);
         setContentView(R.layout.activity_pantry_management);
-        db = new spDatabase(this);
+
 
 
 //      ADD INGREDIENT ======================================================

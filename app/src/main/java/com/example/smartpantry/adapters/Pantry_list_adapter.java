@@ -1,4 +1,4 @@
-package com.example.smartpantry;
+package com.example.smartpantry.adapters;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartpantry.PantryManagement.Ingredient;
+import com.example.smartpantry.R;
 
 import java.util.List;
 
