@@ -182,7 +182,7 @@ public class spHelper extends SQLiteOpenHelper {
                 "('Pepper', 1, 'to taste', 3)");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Vegetable Oil', 1, 'for frying', 3");
+                "('Vegetable Oil', 1, 'for frying', 3)");
 
 
         // Bread Omelette

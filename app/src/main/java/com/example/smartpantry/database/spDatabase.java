@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.example.smartpantry.RecipeResults;
 import com.example.smartpantry.RecipeResults.*;
 import com.example.smartpantry.PantryManagement.Ingredient;
+import com.example.smartpantry.SuggestedRecipesActivity;
 import com.example.smartpantry.SuggestedRecipesActivity.Recipe;
 
 import java.util.ArrayList;
@@ -125,7 +126,7 @@ public class spDatabase {
                         itemCount++;
 
                         missingId = rIngredient.getInt(
-                                rIngredient.getColumnIndexOrThrow("ingredient_id")
+                                rIngredient.getColumnIndexOrThrow("recipe_ingredient_id")
                         );
                     }
                 }
@@ -180,43 +181,75 @@ public class spDatabase {
         return ingredientList;
     }
 
-    public ArrayList<Recipe> showRecipes() {
+    public ArrayList<Recipe> showRecipesByIds(ArrayList<Integer> recipeIds) {
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        ArrayList<Recipe> recipeList = new ArrayList<>();
+
+        for (int id : recipeIds) {
+
+            Cursor c = db.query(
+                    "recipe",
+                    null,
+                    "recipe_id = ?",
+                    new String[]{String.valueOf(id)},
+                    null,
+                    null,
+                    null
+            );
+
+            if (c.moveToFirst()) {
+
+                Recipe recipe = new Recipe(
+                        c.getInt(c.getColumnIndexOrThrow("recipe_id")),
+                        c.getString(c.getColumnIndexOrThrow("recipe_name")),
+                        c.getString(c.getColumnIndexOrThrow("cook_time")),
+                        c.getString(c.getColumnIndexOrThrow("prep_time")),
+                        c.getString(c.getColumnIndexOrThrow("instructions")),
+                        c.getString(c.getColumnIndexOrThrow("image"))
+                );
+
+                recipeList.add(recipe);
+            }
+
+            c.close();
+        }
+
+        return recipeList;
+    }
+    public ArrayList<SuggestedRecipesActivity.RecipeIngredients> showRecipeIngredients(int id) {
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
         String[] contentFormat = {
-                "recipe_id",
-                "recipe_name",
-                "cook_time",
-                "prep_time",
-                "instructions",
-                "image"
+                "ingredient_name",
+                "ingredient_quantity",
+                "ingredient_unit"
         };
 
         Cursor c = db.query(
-                "recipe",
+                "recipe_ingredients",
                 contentFormat,
+                "recipe_id = ?",
+                new String[]{String.valueOf(id)},
                 null,
                 null,
-                null,
-                null,
-                "recipe_name"
+                null
         );
 
-        ArrayList<Recipe> recipeList = new ArrayList<>(); //STORING RECIPES
+        ArrayList<SuggestedRecipesActivity.RecipeIngredients> recipeList = new ArrayList<>();
 
         while (c.moveToNext()) {
 
-            Recipe recipe = new Recipe(
-                    c.getInt(0),
-                    c.getString(1),
-                    c.getString(2),
-                    c.getString(3),
-                    c.getString(4),
-                    c.getString(5)
-            );
+            SuggestedRecipesActivity.RecipeIngredients ingredient =
+                    new SuggestedRecipesActivity.RecipeIngredients(
+                            c.getString(0),
+                            c.getDouble(1),
+                            c.getString(2)
+                    );
 
-            recipeList.add(recipe);
+            recipeList.add(ingredient);
         }
 
         c.close();

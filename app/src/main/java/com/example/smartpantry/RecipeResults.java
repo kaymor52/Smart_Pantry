@@ -7,6 +7,13 @@ public class RecipeResults {
     ArrayList<Integer> matching;
     ArrayList<AlmostMatch> almostMatching;
 
+    public ArrayList<Integer> getMatching(){
+        return matching;
+    }
+    public ArrayList<AlmostMatch> getAlmostMatching(){
+        return almostMatching;
+    }
+
     public RecipeResults(ArrayList<Integer> matching,
                          ArrayList<AlmostMatch> almostMatching) {
         this.matching = matching;
@@ -22,6 +29,14 @@ public class RecipeResults {
             this.recipeId = recipeId;
             this.ingredientId = ingredientId;
         }
+        public int getRecipeId() {
+            return recipeId;
+        }
+
+        public int getIngredientId() {
+            return ingredientId;
+        }
+
     }
 
 }
