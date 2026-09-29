@@ -2,7 +2,7 @@ package com.example.smartpantry;
 
 import java.util.ArrayList;
 
-public class RecipeResults {
+public class RecipeResults_ScreenActivity {
 
     ArrayList<Integer> matching;
     ArrayList<AlmostMatch> almostMatching;
@@ -14,8 +14,8 @@ public class RecipeResults {
         return almostMatching;
     }
 
-    public RecipeResults(ArrayList<Integer> matching,
-                         ArrayList<AlmostMatch> almostMatching) {
+    public RecipeResults_ScreenActivity(ArrayList<Integer> matching,
+                                        ArrayList<AlmostMatch> almostMatching) {
         this.matching = matching;
         this.almostMatching = almostMatching;
     }

@@ -13,11 +13,11 @@ import com.example.smartpantry.R;
 
 import java.util.List;
 
-public class Pantry_list_adapter extends RecyclerView.Adapter<Pantry_list_adapter.MyViewHolder>{
+public class PantryListAdapter extends RecyclerView.Adapter<PantryListAdapter.MyViewHolder>{
 
     private List<Ingredient> ingredientList;
 
-    public Pantry_list_adapter(List<Ingredient> ingredientList) {
+    public PantryListAdapter(List<Ingredient> ingredientList) {
         this.ingredientList = ingredientList;
     }
 

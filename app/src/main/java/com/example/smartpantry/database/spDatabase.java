@@ -5,8 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.smartpantry.RecipeResults;
-import com.example.smartpantry.RecipeResults.*;
+import com.example.smartpantry.RecipeResults_ScreenActivity;
+import com.example.smartpantry.RecipeResults_ScreenActivity.*;
 import com.example.smartpantry.PantryManagement.Ingredient;
 import com.example.smartpantry.SuggestedRecipesActivity;
 import com.example.smartpantry.SuggestedRecipesActivity.Recipe;
@@ -37,7 +37,7 @@ public class spDatabase {
         db.close();
     }
 
-    public RecipeResults getRecipesID() {
+    public RecipeResults_ScreenActivity getRecipesID() {
 
         SQLiteDatabase db = dbHelper.getReadableDatabase();
 
@@ -149,7 +149,7 @@ public class spDatabase {
         rIngredient.close();
         recipe.close();
 
-        return new RecipeResults(matching, almostMatching);
+        return new RecipeResults_ScreenActivity(matching, almostMatching);
     }
     public String wordFilter(String word){
 
@@ -244,9 +244,9 @@ public class spDatabase {
 
             SuggestedRecipesActivity.RecipeIngredients ingredient =
                     new SuggestedRecipesActivity.RecipeIngredients(
-                            c.getString(0),
+                            c.getString(2),
                             c.getDouble(1),
-                            c.getString(2)
+                            c.getString(0)
                     );
 
             recipeList.add(ingredient);
@@ -254,6 +254,49 @@ public class spDatabase {
 
         c.close();
         return recipeList;
+    }
+    public ArrayList<SuggestedRecipesActivity.Recipe> showRecipe(int id) {
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        String[] contentFormat = {
+                "recipe_id",
+                "recipe_name",
+                "cook_time",
+                "prep_time",
+                "instructions",
+                "image"
+        };
+
+        Cursor c = db.query(
+                "recipe",
+                contentFormat,
+                "recipe_id = ?",
+                new String[]{String.valueOf(id)},
+                null,
+                null,
+                null
+        );
+
+        ArrayList<SuggestedRecipesActivity.Recipe> recipe = new ArrayList<>();
+
+        while (c.moveToNext()) {
+
+            SuggestedRecipesActivity.Recipe recipeValue =
+                    new SuggestedRecipesActivity.Recipe(
+                            c.getInt(0),
+                            c.getString(1),
+                            c.getString(2),
+                            c.getString(3),
+                            c.getString(4),
+                            c.getString(5)
+                    );
+
+            recipe.add(recipeValue);
+        }
+
+        c.close();
+        return recipe;
     }
     public void deleteIngredient(int id) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();

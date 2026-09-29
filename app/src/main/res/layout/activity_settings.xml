@@ -20,13 +20,13 @@
         android:id="@+id/bottomNav"
         android:layout_width="0dp"
         android:layout_height="80dp"
-        android:background="@android:color/white"
+        android:background="#F28686"
         android:elevation="12dp"
+        app:itemTextColor="@color/white"
         app:labelVisibilityMode="labeled"
-        app:itemTextColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
 

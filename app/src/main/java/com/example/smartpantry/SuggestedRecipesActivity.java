@@ -2,7 +2,6 @@ package com.example.smartpantry;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -35,13 +34,27 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
             this.instructions = instructions;
             this.image = image;
         }
-        public String getImage(){
-            return image;
-        }
-        public String getName(){
+        public String getName() {
             return name;
         }
-        public int getId(){
+
+        public String getCookTime() {
+            return cookTime;
+        }
+
+        public String getPrepTime() {
+            return prepTime;
+        }
+
+        public String getInstructions() {
+            return instructions;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public int getId() {
             return id;
         }
     }
@@ -57,6 +70,17 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
             this.units = units;
             this.quantity = quantity;
         }
+        public String getUnits() {
+            return units;
+        }
+
+        public double getQuantity() {
+            return quantity;
+        }
+
+        public String getName() {
+            return name;
+        }
 
     }
 
@@ -69,7 +93,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
         db = new spDatabase(this);
 
         // RECYCLER VIEW FOR MATCHED =========================================
-        RecipeResults recipes = db.getRecipesID();
+        RecipeResults_ScreenActivity recipes = db.getRecipesID();
 
         RecyclerView recyclerView = findViewById(R.id.AvailableView);
 
@@ -90,7 +114,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
 
         ArrayList<Integer> almostRecipeIds = new ArrayList<>();
 
-        for (RecipeResults.AlmostMatch almostMatch : recipes.getAlmostMatching()) {
+        for (RecipeResults_ScreenActivity.AlmostMatch almostMatch : recipes.getAlmostMatching()) {
             almostRecipeIds.add(almostMatch.getRecipeId());
         }
 
@@ -106,42 +130,6 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
 
         almostRecycler.setAdapter(almostAdapter);
 
-//        TextView matching = findViewById(R.id.resultEditText);
-//        TextView almostMatch = findViewById(R.id.almostResults);
-
-
-
-
-
-
-//            todo============= >use for detailed screen
-//            ArrayList<Recipe> matchingRecipes = db.showRecipesByIds(recipes.getMatching());
-
-//            String ingredientList="";
-//            for(Recipe recipe : matchingRecipes) {
-//
-//                ArrayList<RecipeIngredients> rIngredients = db.showRecipeIngredients(recipe.id);
-//
-//            }
-//            matching.setText(recipe.name +
-//                    "\nPreparation time: " + recipe.prepTime +
-//                    "\nCook Time: " + recipe.cookTime +
-//                    "\nIngredients: " +//todo===========>
-//                    "\nInstuctions \n\n" + recipe.instructions);
-//
-//            ImageView icon = findViewById(R.id.imageView);
-//
-//            String image1 = recipe.image;
-//
-//            int imageId = getResources().getIdentifier(
-//                    image1,
-//                    "drawable",
-//                    getPackageName()
-//            );
-//
-//            icon.setImageResource(imageId);
-
-
         BottomNavigationView bottomNavigation = findViewById(R.id.bottomNav);
         bottomNavigation.inflateMenu(R.menu.nav_menu);
         bottomNavigation.setOnItemSelectedListener(item -> {
@@ -149,7 +137,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.nav_pantry) {
-                startActivity(new Intent(SuggestedRecipesActivity.this, PantryHome.class));
+                startActivity(new Intent(SuggestedRecipesActivity.this, PantryHomeActivity.class));
                 return true;
             }
 

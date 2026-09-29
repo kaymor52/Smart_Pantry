@@ -26,15 +26,22 @@ public class EditIngredientActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_edit_ingredient);
         findViewById(R.id.main).requestFocus();
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            v.setPadding(
+                    systemBars.left,
+                    systemBars.top,
+                    systemBars.right,
+                    systemBars.bottom
+            );
             return insets;
         });
 
 
 //      CANCEL BUTTON
         Button cancel = findViewById(R.id.cancelButton);
+
         cancel.setOnClickListener(v -> {
             finish();
         });
@@ -66,41 +73,67 @@ public class EditIngredientActivity extends AppCompatActivity {
             TextView message = findViewById(R.id.message);
 
             try {
+
                 String nameEdited = nameEdit.getText().toString().trim();
                 String quantityText = quantityEdit.getText().toString().trim();
                 String unitEdited = unitEdit.getText().toString().trim();
                 String expiryEdited = dateEdit.getText().toString().trim();
 
 
-                if (!nameEdited.isEmpty() && !quantityText.isEmpty() && !unitEdited.isEmpty()) {
+                if (!nameEdited.isEmpty()
+                        && !quantityText.isEmpty()
+                        && !unitEdited.isEmpty()) {
 
                     int quantityEdited = Integer.parseInt(quantityText);
 
-                    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-                    format.setLenient(false);
 
-                    Date expiry = format.parse(expiryEdited);
-                    Date today = new Date();
+                    // ONLY VALIDATE EXPIRY IF ONE WAS ENTERED
+                    if (!expiryEdited.isEmpty()) {
 
-                    if (expiry.before(today)) {
+                        SimpleDateFormat format =
+                                new SimpleDateFormat("dd/MM/yyyy");
 
-                        message.setText("Expiry date cannot be before today");
-                        message.setVisibility(View.VISIBLE);
-                        return;
+                        format.setLenient(false);
+
+                        Date expiry = format.parse(expiryEdited);
+                        Date today = new Date();
+
+                        if (expiry.before(today)) {
+
+                            message.setText(
+                                    "Expiry date cannot be before today"
+                            );
+                            message.setVisibility(View.VISIBLE);
+                            return;
+                        }
                     }
+
 
                     if (quantityEdited <= 0) {
-                        message.setText("Quantity must be greater than 0");
+
+                        message.setText(
+                                "Quantity must be greater than 0"
+                        );
                         message.setVisibility(View.VISIBLE);
                         return;
                     }
 
+
                     spDatabase db = new spDatabase(this);
-                    db.updateIngredient(id, nameEdited, quantityEdited, unitEdited, expiryEdited);
+
+                    db.updateIngredient(
+                            id,
+                            nameEdited,
+                            quantityEdited,
+                            unitEdited,
+                            expiryEdited
+                    );
 
                     message.setVisibility(View.GONE);
                     finish();
-                }else{
+
+                } else {
+
                     message.setText("fill the entire form");
                     message.setVisibility(View.VISIBLE);
                 }
@@ -118,8 +151,6 @@ public class EditIngredientActivity extends AppCompatActivity {
 
         });
 
-
     }
-
 
 }

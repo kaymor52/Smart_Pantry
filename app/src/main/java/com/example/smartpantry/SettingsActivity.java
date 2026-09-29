@@ -22,7 +22,7 @@ public class SettingsActivity extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.nav_pantry) {
-                startActivity(new Intent(SettingsActivity.this, PantryHome.class));
+                startActivity(new Intent(SettingsActivity.this, PantryHomeActivity.class));
                 return true;
             }
 

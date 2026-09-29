@@ -13,7 +13,7 @@
 
         <!-- HOME / FIRST SCREEN -->
         <activity
-            android:name=".PantryHome"
+            android:name=".PantryHomeActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize" >
             <intent-filter>
@@ -38,7 +38,10 @@
             android:name=".SettingsActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-
+        <activity
+            android:name=".recipeDetailActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

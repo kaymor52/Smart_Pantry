@@ -15,7 +15,7 @@ import com.google.android.material.button.MaterialButton;
 
 import java.util.List;
 
-public class ingredientAdapter extends RecyclerView.Adapter<ingredientAdapter.MyViewHolder> {
+public class IngredientAdapter extends RecyclerView.Adapter<IngredientAdapter.MyViewHolder> {
 
     public interface OnDeleteClickListener {
         void onDeleteClick(Ingredient ingredient);
@@ -29,11 +29,11 @@ public class ingredientAdapter extends RecyclerView.Adapter<ingredientAdapter.My
     private OnDeleteClickListener deleteListener;
     private OnEditClickListener editListener;
 
-    public ingredientAdapter(List<Ingredient> ingredientList) {
+    public IngredientAdapter(List<Ingredient> ingredientList) {
         this.ingredientList = ingredientList;
     }
 
-    public ingredientAdapter(
+    public IngredientAdapter(
             List<Ingredient> ingredientList,
             OnDeleteClickListener deleteListener,
             OnEditClickListener editListener) {

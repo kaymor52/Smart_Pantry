@@ -1,5 +1,6 @@
 package com.example.smartpantry;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,7 +16,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartpantry.adapters.ingredientAdapter;
+import com.example.smartpantry.adapters.IngredientAdapter;
 import com.example.smartpantry.database.spDatabase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -28,7 +29,7 @@ import java.util.List;
 
 public class PantryManagement extends AppCompatActivity {
     private spDatabase db;
-    ingredientAdapter adapter;
+    IngredientAdapter adapter;
 
     public static class Ingredient {
         private int id;
@@ -86,6 +87,7 @@ public class PantryManagement extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,8 +95,7 @@ public class PantryManagement extends AppCompatActivity {
         setContentView(R.layout.activity_pantry_management);
 
 
-
-//      ADD INGREDIENT ======================================================
+//region    ADD INGREDIENT ======================================================
         Button addButton = findViewById(R.id.addIngredientButton);
 
         addButton.setOnClickListener(v -> {
@@ -108,56 +109,92 @@ public class PantryManagement extends AppCompatActivity {
 
             try {
 
-                if (!name.getText().toString().isEmpty() && !quantity.getText().toString().isEmpty() && !unit.getText().toString().isEmpty() ) {
+                if (!name.getText().toString().isEmpty()
+                        && !quantity.getText().toString().isEmpty()
+                        && !unit.getText().toString().isEmpty()) {
 
-                    SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
-                    format.setLenient(false);
+                    // ONLY parse expiry if one was entered
+                    if (!expiryDate.getText().toString().isBlank()) {
 
-                    Date expiry = format.parse(expiryDate.getText().toString());
-                    Date today = new Date();
+                        @SuppressLint("SimpleDateFormat") SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+                        format.setLenient(false);
 
-                    if(!expiryDate.getText().toString().isBlank()){
+                        Date expiry = format.parse(expiryDate.getText().toString());
+                        Date today = new Date();
 
-                        if(expiry.before(today)) {
-
+                        if (expiry.before(today)) {
                             message.setText("Expiry date cannot be before today");
                             message.setVisibility(View.VISIBLE);
                             return;
                         }
-
                     }
+
                     if (Integer.parseInt(quantity.getText().toString()) <= 0) {
                         message.setText("Quantity must be greater than 0");
                         message.setVisibility(View.VISIBLE);
                         return;
                     }
-                    ingredients.add(new Ingredient(name.getText().toString().trim(), Integer.parseInt(quantity.getText().toString().trim()), unit.getText().toString().trim(), expiryDate.getText().toString().trim()));
+
+                    ingredients.add(
+                            new Ingredient(
+                                    name.getText().toString().trim(),
+                                    Integer.parseInt(quantity.getText().toString().trim()),
+                                    unit.getText().toString().trim(),
+                                    expiryDate.getText().toString().trim()
+                            )
+                    );
 
                     for (Ingredient ingredient : ingredients) {
-                        db.addIngredient(ingredient.getName(), ingredient.getQuantity(), ingredient.getUnit(), ingredient.getExpiry());
+
+                        ArrayList<Ingredient> existingIngredients =
+                                db.showIngredients();
+
+                        for (Ingredient existingIngredient : existingIngredients) {
+
+                            if (existingIngredient.getName()
+                                    .equals(ingredient.getName())) {
+
+                                message.setText(
+                                        "Ingredient already exists, edit existing ingredient"
+                                );
+                                message.setVisibility(View.VISIBLE);
+                                return;
+                            }
+                        }
+
+                        db.addIngredient(
+                                ingredient.getName(),
+                                ingredient.getQuantity(),
+                                ingredient.getUnit(),
+                                ingredient.getExpiry()
+                        );
 
                         Log.d("added items", ingredient.getName());
                     }
 
                     message.setVisibility(View.GONE);
                     adapter.refreshList(db.showIngredients());
-                }else{
+
+                } else {
+
                     message.setText("fill the entire form");
                     message.setVisibility(View.VISIBLE);
                 }
+
             } catch (ParseException e) {
 
-                message.setText("Invalid date");
+                message.setText("Invalid date.");
                 message.setVisibility(View.VISIBLE);
 
             } catch (NumberFormatException e) {
 
-                message.setText("Quantity must be a number");
+                message.setText("Quantity must be a number.");
                 message.setVisibility(View.VISIBLE);
             }
         });
+        //endregion
 
-//      NAVIGATION BAR ======================================================
+//region    NAVIGATION BAR ======================================================
         BottomNavigationView bottomNavigation = findViewById(R.id.bottomNav);
 
         ViewCompat.setOnApplyWindowInsetsListener(bottomNavigation, (v, insets) -> {
@@ -175,7 +212,7 @@ public class PantryManagement extends AppCompatActivity {
             int id = item.getItemId();
 
             if (id == R.id.nav_pantry) {
-                startActivity(new Intent(PantryManagement.this, PantryHome.class));
+                startActivity(new Intent(PantryManagement.this, PantryHomeActivity.class));
                 return true;
             }
 
@@ -197,17 +234,16 @@ public class PantryManagement extends AppCompatActivity {
         });
 
         bottomNavigation.setSelectedItemId(R.id.nav_edit);
-
-        //RECYCLE VIEW ======================================================
+        //endregion
+//region    RECYCLE VIEW ======================================================
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         List<Ingredient> ingredientArray = db.showIngredients();
-        adapter = new ingredientAdapter(ingredientArray, ingredient -> {
+        adapter = new IngredientAdapter(ingredientArray, ingredient -> {
 
             db.deleteIngredient(ingredient.getId());
-
             adapter.refreshList(db.showIngredients());
         }, ingredient -> {
             Intent intent = new Intent(PantryManagement.this, EditIngredientActivity.class);
@@ -222,5 +258,6 @@ public class PantryManagement extends AppCompatActivity {
         });
 
         recyclerView.setAdapter(adapter);
+        //endregion
     }
 }

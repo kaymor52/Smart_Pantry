@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="180dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/round_edge"
     android:orientation="vertical"
     android:padding="8dp">
 
@@ -19,14 +21,16 @@
         android:layout_height="wrap_content"
         android:contentDescription="Image of Food"
         android:padding="8dp"
+        android:textColor="#000000"
         android:textSize="14sp"
         android:textStyle="bold" />
 
     <TextView
         android:id="@+id/missingIngredient"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:padding="8dp"
+        android:textColor="#000000"
         android:textSize="16sp" />
 
 </LinearLayout>

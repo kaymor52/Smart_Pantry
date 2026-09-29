@@ -1,5 +1,6 @@
 package com.example.smartpantry.adapters;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartpantry.R;
 import com.example.smartpantry.SuggestedRecipesActivity;
+import com.example.smartpantry.recipeDetailActivity;
 
 import java.util.ArrayList;
 
@@ -36,6 +38,15 @@ public class RecipeResultAdapter extends RecyclerView.Adapter<RecipeResultAdapte
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
 
         SuggestedRecipesActivity.Recipe recipe = recipes.get(position);
+
+        holder.itemView.setOnClickListener(v -> {
+
+            Intent intent = new Intent(v.getContext(),recipeDetailActivity.class);
+
+            intent.putExtra("recipe_id", recipe.getId());
+
+            v.getContext().startActivity(intent);
+        });
 
         holder.recipeName.setText(recipe.getName());
 

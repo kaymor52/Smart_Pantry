@@ -7,13 +7,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.smartpantry.adapters.Pantry_list_adapter;
+import com.example.smartpantry.adapters.PantryListAdapter;
 import com.example.smartpantry.database.spDatabase;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
-public class PantryHome extends AppCompatActivity {
+public class PantryHomeActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +36,17 @@ public class PantryHome extends AppCompatActivity {
             }
 
             if (id == R.id.nav_edit) {
-                startActivity(new Intent(PantryHome.this, PantryManagement.class));
+                startActivity(new Intent(PantryHomeActivity.this, PantryManagement.class));
                 return true;
             }
 
             if (id == R.id.nav_recipes) {
-                startActivity(new Intent(PantryHome.this, SuggestedRecipesActivity.class));
+                startActivity(new Intent(PantryHomeActivity.this, SuggestedRecipesActivity.class));
                 return true;
             }
 
             if (id == R.id.nav_settings) {
-                startActivity(new Intent(PantryHome.this, SettingsActivity.class));
+                startActivity(new Intent(PantryHomeActivity.this, SettingsActivity.class));
                 return true;
             }
 
@@ -59,7 +59,7 @@ public class PantryHome extends AppCompatActivity {
 
         List<PantryManagement.Ingredient> ingredients = db.showIngredients();
 
-        Pantry_list_adapter adapter = new Pantry_list_adapter(ingredients);
+        PantryListAdapter adapter = new PantryListAdapter(ingredients);
 
         recyclerView.setAdapter(adapter);
     }

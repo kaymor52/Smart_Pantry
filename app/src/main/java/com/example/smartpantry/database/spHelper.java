@@ -3,6 +3,7 @@ package com.example.smartpantry.database;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -13,11 +14,12 @@ public class spHelper extends SQLiteOpenHelper {
                     @Nullable SQLiteDatabase.CursorFactory factory,
                     int version) {
 
-        super(context, "smartPantry.db", null, 1);
+        super(context, "smartPantry.db", null, version);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
+        Log.d("DATABASE", "onCreate() RUNNING");
 
         db.execSQL("CREATE TABLE ingredient(" +
                 "ingredient_id INTEGER PRIMARY KEY AUTOINCREMENT," +
@@ -49,7 +51,11 @@ public class spHelper extends SQLiteOpenHelper {
                 "'Fettuccine Alfredo', " +
                 "'15 minutes', " +
                 "'10 minutes', " +
-                "'Cook the fettuccine. Prepare the sauce using butter, heavy cream and Parmesan. Season with salt and black pepper, then combine with the pasta and garnish with parsley.', " +
+                "'Step 1: Cook the fettuccine.\n" +
+                "Step 2: Prepare the sauce using butter, heavy cream and Parmesan.\n" +
+                "Step 3: Season with salt and black pepper.\n" +
+                "Step 4: Combine the sauce with the pasta.\n" +
+                "Step 5: Garnish with parsley.', " +
                 "'fettuccine_alfredo')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
@@ -80,7 +86,10 @@ public class spHelper extends SQLiteOpenHelper {
                 "'Beef Mechado', " +
                 "'60 minutes', " +
                 "'20 minutes', " +
-                "'Cook the beef with the listed ingredients until tender and serve with the potatoes.', " +
+                "'Step 1: Prepare the beef and listed ingredients.\n" +
+                "Step 2: Cook the beef with the listed ingredients until tender.\n" +
+                "Step 3: Cook the potatoes until ready.\n" +
+                "Step 4: Serve the beef with the potatoes.', " +
                 "'beef_mechado')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
@@ -126,7 +135,10 @@ public class spHelper extends SQLiteOpenHelper {
                 "'Bistek', " +
                 "'30 minutes', " +
                 "'15 minutes', " +
-                "'Cook the beef with soy sauce, lemon, garlic and onions until tender.', " +
+                "'Step 1: Prepare the beef, soy sauce, lemon, garlic and onions.\n" +
+                "Step 2: Cook the beef with the soy sauce and other ingredients.\n" +
+                "Step 3: Continue cooking until the beef is tender.\n" +
+                "Step 4: Serve when ready.', " +
                 "'bistek')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
@@ -160,7 +172,11 @@ public class spHelper extends SQLiteOpenHelper {
                 "'Crispy Eggplant', " +
                 "'30 minutes', " +
                 "'15 minutes', " +
-                "'Coat the eggplant in egg, breadcrumbs and sesame seeds, then cook until crispy.', " +
+                "'Step 1: Prepare the eggplant.\n" +
+                "Step 2: Coat the eggplant in egg.\n" +
+                "Step 3: Coat the eggplant with breadcrumbs and sesame seeds.\n" +
+                "Step 4: Cook until crispy.\n" +
+                "Step 5: Season with salt and pepper and serve.', " +
                 "'crispy_eggplant')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
@@ -185,13 +201,20 @@ public class spHelper extends SQLiteOpenHelper {
                 "('Vegetable Oil', 1, 'for frying', 3)");
 
 
-        // Bread Omelette
+        // Bread Omelet
         db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
                 "4, " +
                 "'Bread Omelette', " +
                 "'10 minutes', " +
                 "'5 minutes', " +
-                "'Make and enjoy.', " +
+                "'Step 1: Heat a pan and add a little butter or oil.\n" +
+                "Step 2: Whisk the eggs with salt and pepper.\n" +
+                "Step 3: Pour the egg mixture into the hot pan and spread it out.\n" +
+                "Step 4: Dip the bread slices into the egg, then place them on top of the omelette.\n" +
+                "Step 5: Carefully flip the bread and egg together.\n" +
+                "Step 6: Cook until the bread is toasted and the egg is cooked.\n" +
+                "Step 7: Fold the omelette around the bread, then fold the bread together like a sandwich.\n" +
+                "Step 8: Remove from the pan and serve warm.', " +
                 "'bread_omelette')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
@@ -201,17 +224,27 @@ public class spHelper extends SQLiteOpenHelper {
                 "('Egg', 2, 'whole', 4)");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
-                "('Salt', 0.5, 'amount', 4)");
+                "('Salt', 0.5, 'tsp', 4)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                "('Black Pepper', 0.25, 'tsp', 4)");
+
+        db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
+                        "('Butter', 1, 'tbsp', 4)");
 
 
-        // Blini Pancakes
-        db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
-                "5, " +
-                "'Blini Pancakes', " +
-                "'20 minutes', " +
-                "'15 minutes', " +
-                "'Prepare the batter using buckwheat, flour, salt, yeast, milk, butter and egg, then cook the pancakes.', " +
-                "'blini_pancakes')");
+                // Blini Pancakes
+                db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +
+                        "5, " +
+                        "'Blini Pancakes', " +
+                        "'20 minutes', " +
+                        "'15 minutes', " +
+                        "'Step 1: Prepare the batter using buckwheat, flour, salt, yeast and milk.\n" +
+                        "Step 2: Add the butter and egg to the mixture.\n" +
+                        "Step 3: Mix the ingredients until the batter is combined.\n" +
+                        "Step 4: Cook the batter as pancakes.\n" +
+                        "Step 5: Serve the pancakes when ready.', " +
+                        "'blini_pancakes')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
                 "('Buckwheat', 0.5, 'cup', 5)");
@@ -241,7 +274,12 @@ public class spHelper extends SQLiteOpenHelper {
                 "'Potato Salad', " +
                 "'30 minutes', " +
                 "'20 minutes', " +
-                "'Prepare the potatoes, carrots, eggs and other ingredients, then combine with mayonnaise.', " +
+                "'Step 1: Prepare the potatoes, carrots and eggs.\n" +
+                "Step 2: Prepare the sausages, dill, peas and onions.\n" +
+                "Step 3: Combine the prepared ingredients.\n" +
+                "Step 4: Add the white wine vinegar and salt.\n" +
+                "Step 5: Mix with the mayonnaise.\n" +
+                "Step 6: Combine everything and serve.', " +
                 "'potato_salad')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
@@ -281,7 +319,13 @@ public class spHelper extends SQLiteOpenHelper {
                         "'Mini Chilli Beef Pies', " +
                         "'45 minutes', " +
                         "'20 minutes', " +
-                        "'Prepare the beef filling with the spices and vegetables, then fill the pastry and bake.', " +
+                        "'Step 1: Prepare the pastry and filling ingredients.\n" +
+                        "Step 2: Prepare the beef filling with the spices and vegetables.\n" +
+                        "Step 3: Add the kidney beans and potatoes to the filling.\n" +
+                        "Step 4: Prepare the pastry for the pies.\n" +
+                        "Step 5: Fill the pastry with the beef mixture.\n" +
+                        "Step 6: Bake the pies until ready.\n" +
+                        "Step 7: Serve with sour cream and chopped chive.', " +
                         "'mini_chilli_beef_pies')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
@@ -330,7 +374,11 @@ public class spHelper extends SQLiteOpenHelper {
                         "'Sticky Chicken', " +
                         "'40 minutes', " +
                         "'10 minutes', " +
-                        "'Mix the sauce ingredients, coat the chicken drumsticks and cook until done.', " +
+                        "'Step 1: Prepare the sauce ingredients.\n" +
+                        "Step 2: Mix the sauce ingredients together.\n" +
+                        "Step 3: Coat the chicken drumsticks with the sauce.\n" +
+                        "Step 4: Cook the chicken until done.\n" +
+                        "Step 5: Serve when ready.', " +
                         "'sticky_chicken')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
@@ -358,7 +406,12 @@ public class spHelper extends SQLiteOpenHelper {
                         "'Kenyan Beef Curry', " +
                         "'60 minutes', " +
                         "'20 minutes', " +
-                        "'Cook the beef with onions, tomatoes, spices and the remaining ingredients until tender.', " +
+                        "'Step 1: Prepare the beef, onions, tomatoes and spices.\n" +
+                        "Step 2: Cook the beef with the onions and tomatoes.\n" +
+                        "Step 3: Add the spices and tomato puree.\n" +
+                        "Step 4: Add the water and remaining ingredients.\n" +
+                        "Step 5: Cook until the beef is tender.\n" +
+                        "Step 6: Add the cilantro leaves and serve.', " +
                         "'kenyan_beef_curry')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
@@ -410,7 +463,12 @@ public class spHelper extends SQLiteOpenHelper {
                         "'Sukuma Wiki', " +
                         "'25 minutes', " +
                         "'10 minutes', " +
-                        "'Cook the onions and kale with oil, salt and cream until tender.', " +
+                        "'Step 1: Prepare the onions and kale.\n" +
+                        "Step 2: Heat the oil and cook the onions.\n" +
+                        "Step 3: Add the kale and salt.\n" +
+                        "Step 4: Add the double cream.\n" +
+                        "Step 5: Cook until the kale is tender.\n" +
+                        "Step 6: Serve when ready.', " +
                         "'sukuma_wiki')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
@@ -435,7 +493,14 @@ public class spHelper extends SQLiteOpenHelper {
                         "'Cinnamon Buns', " +
                         "'25 minutes', " +
                         "'30 minutes', " +
-                        "'Prepare the dough, add the cinnamon filling, shape the buns and bake until golden.', " +
+                        "'Step 1: Prepare the dough using butter, milk, salt, flour and yeast.\n" +
+                        "Step 2: Add the cardamom, sugar and egg.\n" +
+                        "Step 3: Mix and prepare the dough.\n" +
+                        "Step 4: Prepare the cinnamon filling using butter, sugar and cinnamon.\n" +
+                        "Step 5: Add the filling to the dough.\n" +
+                        "Step 6: Shape the dough into buns.\n" +
+                        "Step 7: Bake the buns until golden.\n" +
+                        "Step 8: Serve when ready.', " +
                         "'cinnamon_buns')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
@@ -478,7 +543,13 @@ public class spHelper extends SQLiteOpenHelper {
                         "'Karbonader', " +
                         "'30 minutes', " +
                         "'15 minutes', " +
-                        "'Combine the beef with seasoning and other ingredients, form patties and cook until done. Serve with caramelized onions.', " +
+                        "'Step 1: Prepare the ground beef and seasoning.\n" +
+                        "Step 2: Combine the beef with salt, pepper, nutmeg and cornstarch.\n" +
+                        "Step 3: Add the water and combine the mixture.\n" +
+                        "Step 4: Form the mixture into patties.\n" +
+                        "Step 5: Prepare and caramelize the onions.\n" +
+                        "Step 6: Cook the patties until done.\n" +
+                        "Step 7: Serve the patties with the caramelized onions.', " +
                         "'karbonader')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
@@ -512,7 +583,12 @@ public class spHelper extends SQLiteOpenHelper {
                         "'Jamon & Wild Garlic Croquetas', " +
                         "'40 minutes', " +
                         "'30 minutes', " +
-                        "'Prepare the croqueta mixture, shape into portions, coat with egg and breadcrumbs, then cook.', " +
+                        "'Step 1: Prepare the wild garlic and other ingredients.\n" +
+                        "Step 2: Prepare the croqueta mixture using the milk, flour, olive oil, manchego and jamón ibérico.\n" +
+                        "Step 3: Shape the mixture into portions.\n" +
+                        "Step 4: Coat the portions with egg and breadcrumbs.\n" +
+                        "Step 5: Cook the croquetas until ready.\n" +
+                        "Step 6: Serve when ready.', " +
                         "'jamon_wild_garlic_croquetas')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
@@ -549,7 +625,12 @@ public class spHelper extends SQLiteOpenHelper {
                         "'Churros', " +
                         "'30 minutes', " +
                         "'20 minutes', " +
-                        "'Prepare the churro mixture and chocolate accompaniment using the listed ingredients.', " +
+                        "'Step 1: Prepare the churro mixture using the butter, vanilla, flour and baking powder.\n" +
+                        "Step 2: Prepare the chocolate accompaniment using the dark chocolate, cream, milk and golden syrup.\n" +
+                        "Step 3: Prepare the cinnamon sugar using the caster sugar and cinnamon.\n" +
+                        "Step 4: Shape the churro mixture into portions.\n" +
+                        "Step 5: Cook the churros until ready.\n" +
+                        "Step 6: Serve the churros with the chocolate accompaniment and cinnamon sugar.', " +
                         "'churros')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
@@ -595,7 +676,12 @@ public class spHelper extends SQLiteOpenHelper {
                         "'Chorizo, Potato & Cheese Omelette', " +
                         "'25 minutes', " +
                         "'10 minutes', " +
-                        "'Cook the potato and chorizo, add the eggs and cheese, then cook until the omelette is set.', " +
+                        "'Step 1: Prepare the potato and chorizo.\n" +
+                        "Step 2: Cook the potato and chorizo with olive oil.\n" +
+                        "Step 3: Add the eggs to the pan.\n" +
+                        "Step 4: Add the parsley and cheese.\n" +
+                        "Step 5: Cook until the omelette is set.\n" +
+                        "Step 6: Serve when ready.', " +
                         "'chorizo_potato_cheese_omelette')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
@@ -623,7 +709,12 @@ public class spHelper extends SQLiteOpenHelper {
                         "'Kentucky Fried Chicken', " +
                         "'45 minutes', " +
                         "'20 minutes', " +
-                        "'Prepare the chicken with the listed coating ingredients and cook according to the recipe.', " +
+                        "'Step 1: Prepare the chicken and coating ingredients.\n" +
+                        "Step 2: Prepare the egg white mixture.\n" +
+                        "Step 3: Combine the flour with the brown sugar and seasonings.\n" +
+                        "Step 4: Coat the chicken with the prepared mixtures.\n" +
+                        "Step 5: Cook the chicken until completely cooked.\n" +
+                        "Step 6: Serve when ready.', " +
                         "'kentucky_fried_chicken')");
 
         db.execSQL("INSERT INTO recipe_ingredients(ingredient_name, ingredient_quantity, ingredient_unit, recipe_id) VALUES" +
