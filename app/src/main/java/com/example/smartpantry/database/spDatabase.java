@@ -298,10 +298,57 @@ public class spDatabase {
         c.close();
         return recipe;
     }
+
     public void deleteIngredient(int id) {
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         db.delete("ingredient", "ingredient_id = ?", new String[]{String.valueOf(id)});
+    }
+    public void deleteAll () {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        db.execSQL("DELETE FROM ingredient");
+    }
+
+    public int getAlert() {
+
+        SQLiteDatabase db = dbHelper.getReadableDatabase();
+
+        Cursor c = db.query(
+                "settings",
+                new String[]{"alert"},
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+
+        int alert = 0;
+
+        if (c.moveToFirst()) {
+            alert = c.getInt(0);
+        }
+
+        c.close();
+
+        return alert;
+    }
+    public void setAlert(int alert) {
+
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("alert", alert);
+
+        db.update(
+                "settings",
+                values,
+                "settings_id = ?",
+                new String[]{"1"}
+        );
+
+        db.close();
     }
 
     public void updateIngredient(int id, String name, int quantity, String unit, String expiryDate) {
@@ -316,4 +363,5 @@ public class spDatabase {
 
         db.update("ingredient", values, "ingredient_id = ?", new String[]{String.valueOf(id)});
     }
+
 }

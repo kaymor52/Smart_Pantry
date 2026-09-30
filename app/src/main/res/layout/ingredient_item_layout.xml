@@ -90,6 +90,7 @@
                 android:id="@+id/edit"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
+                android:background="#F28686"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:minWidth="0dp"
@@ -98,9 +99,10 @@
                 android:paddingEnd="8dp"
                 android:text="@string/edit"
                 android:textAllCaps="false"
-                android:textSize="10sp"
                 android:textColor="@color/white"
-                android:background="#F28686"
+
+                android:textSize="10sp"
+                app:backgroundTint="#F28686"
                 app:cornerRadius="4dp" />
 
             <com.google.android.material.button.MaterialButton
@@ -108,6 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
                 android:layout_marginStart="4dp"
+                android:background="#F28686"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:minWidth="0dp"
@@ -117,8 +120,8 @@
                 android:text="@string/delete"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
-                android:background="#F28686"
                 android:textSize="10sp"
+                app:backgroundTint="#F28686"
                 app:cornerRadius="4dp" />
 
         </LinearLayout>

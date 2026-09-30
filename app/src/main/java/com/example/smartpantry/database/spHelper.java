@@ -14,7 +14,7 @@ public class spHelper extends SQLiteOpenHelper {
                     @Nullable SQLiteDatabase.CursorFactory factory,
                     int version) {
 
-        super(context, "smartPantry.db", null, version);
+        super(context, "smartPantry.db", null, 2);
     }
 
     @Override
@@ -44,6 +44,20 @@ public class spHelper extends SQLiteOpenHelper {
                 "recipe_id INTEGER," +
                 "FOREIGN KEY(recipe_id) REFERENCES recipe(recipe_id))");
 
+
+        //region SETTINGS
+        db.execSQL("CREATE TABLE settings(" +
+                "settings_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "alert INTEGER)");
+
+        db.execSQL("INSERT INTO settings (alert) VALUES (0)");
+
+        db.execSQL("CREATE TABLE notification_messages(" +
+                "notification_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                "notification_name TEXT, " +
+                "day_count INTEGER)");
+
+//endregion
 
         // Fettuccine Alfredo
         db.execSQL("INSERT INTO recipe(recipe_id, recipe_name, cook_time, prep_time, instructions, image) VALUES(" +

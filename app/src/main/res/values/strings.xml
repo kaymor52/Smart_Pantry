@@ -10,4 +10,6 @@
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="image_of_food">image of food</string>
+    <string name="erase">Erase</string>
+    <string name="settings">Settings</string>
 </resources>
