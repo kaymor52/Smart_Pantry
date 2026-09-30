@@ -2,6 +2,8 @@ package com.example.smartpantry;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -34,6 +36,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
             this.instructions = instructions;
             this.image = image;
         }
+
         public String getName() {
             return name;
         }
@@ -70,6 +73,7 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
             this.units = units;
             this.quantity = quantity;
         }
+
         public String getUnits() {
             return units;
         }
@@ -109,13 +113,35 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapter);
 
+        // SHOW MESSAGE IF NO RECIPES ARE AVAILABLE
+        TextView noAvailableText =
+                findViewById(R.id.noAvailableText);
+
+        if (matchingRecipes.isEmpty()) {
+
+            recyclerView.setVisibility(View.GONE);
+            noAvailableText.setVisibility(View.VISIBLE);
+
+        } else {
+
+            recyclerView.setVisibility(View.VISIBLE);
+            noAvailableText.setVisibility(View.GONE);
+
+        }
+
         // RECYCLER VIEW FOR ALMOST MATCH =========================================
-        RecyclerView almostRecycler = findViewById(R.id.almostRecycler);
+        RecyclerView almostRecycler =
+                findViewById(R.id.almostRecycler);
 
-        ArrayList<Integer> almostRecipeIds = new ArrayList<>();
+        ArrayList<Integer> almostRecipeIds =
+                new ArrayList<>();
 
-        for (RecipeResults_ScreenActivity.AlmostMatch almostMatch : recipes.getAlmostMatching()) {
-            almostRecipeIds.add(almostMatch.getRecipeId());
+        for (RecipeResults_ScreenActivity.AlmostMatch almostMatch :
+                recipes.getAlmostMatching()) {
+
+            almostRecipeIds.add(
+                    almostMatch.getRecipeId()
+            );
         }
 
         ArrayList<Recipe> almostRecipes =
@@ -130,33 +156,78 @@ public class SuggestedRecipesActivity extends AppCompatActivity {
 
         almostRecycler.setAdapter(almostAdapter);
 
-        BottomNavigationView bottomNavigation = findViewById(R.id.bottomNav);
+        // SHOW MESSAGE IF NO ALMOST-MATCHING RECIPES ARE AVAILABLE
+        TextView noAlmostText =
+                findViewById(R.id.noAlmostText);
+
+        if (almostRecipes.isEmpty()) {
+
+            almostRecycler.setVisibility(View.GONE);
+            noAlmostText.setVisibility(View.VISIBLE);
+
+        } else {
+
+            almostRecycler.setVisibility(View.VISIBLE);
+            noAlmostText.setVisibility(View.GONE);
+
+        }
+
+        // BOTTOM NAVIGATION =========================================
+        BottomNavigationView bottomNavigation =
+                findViewById(R.id.bottomNav);
+
         bottomNavigation.inflateMenu(R.menu.nav_menu);
+
         bottomNavigation.setOnItemSelectedListener(item -> {
 
             int id = item.getItemId();
 
             if (id == R.id.nav_pantry) {
-                startActivity(new Intent(SuggestedRecipesActivity.this, PantryHomeActivity.class));
+
+                startActivity(
+                        new Intent(
+                                SuggestedRecipesActivity.this,
+                                PantryHomeActivity.class
+                        )
+                );
+
                 return true;
             }
 
             if (id == R.id.nav_edit) {
-                startActivity(new Intent(SuggestedRecipesActivity.this, PantryManagement.class));
+
+                startActivity(
+                        new Intent(
+                                SuggestedRecipesActivity.this,
+                                PantryManagement.class
+                        )
+                );
+
                 return true;
             }
 
             if (id == R.id.nav_recipes) {
+
                 return true;
             }
 
             if (id == R.id.nav_settings) {
-                startActivity(new Intent(SuggestedRecipesActivity.this, SettingsActivity.class));
+
+                startActivity(
+                        new Intent(
+                                SuggestedRecipesActivity.this,
+                                SettingsActivity.class
+                        )
+                );
+
                 return true;
             }
 
             return false;
         });
-        bottomNavigation.setSelectedItemId(R.id.nav_recipes);
+
+        bottomNavigation.setSelectedItemId(
+                R.id.nav_recipes
+        );
     }
 }
