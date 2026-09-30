@@ -3,24 +3,24 @@
 
     <item
         android:id="@+id/nav_pantry"
-        android:icon="@drawable/baseline_view_list_24"
+        android:icon="@drawable/home"
         android:title="Pantry"
         
         />
 
     <item
         android:id="@+id/nav_edit"
-
+        android:icon="@drawable/edit"
         android:title="Edit" />
 
     <item
         android:id="@+id/nav_recipes"
-
+        android:icon="@drawable/recipe_book"
         android:title="Recipes" />
 
     <item
         android:id="@+id/nav_settings"
-
+        android:icon="@drawable/settings"
         android:title="Settings" />
 
 </menu>

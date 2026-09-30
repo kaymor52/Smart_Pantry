@@ -51,4 +51,50 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <TextView
+        android:id="@+id/noAvailableText"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="No recipes missing one ingredient are available.
+Time to go shopping!"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="invisible" />
+
+    <ImageButton
+        android:id="@+id/notificationButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/notification_background"
+        android:contentDescription="Expiry notifications"
+        android:src="@drawable/no_notification"
+        android:scaleType="centerInside"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/textHeader"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.76"
+        app:layout_constraintStart_toEndOf="@+id/textHeader"
+        app:layout_constraintTop_toTopOf="@+id/textHeader" /> />
+    <LinearLayout
+        android:layout_width="83dp"
+        android:layout_height="80dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="@+id/notificationButton"
+        app:layout_constraintTop_toBottomOf="@+id/notificationButton">
+
+        <ScrollView
+            android:layout_width="100dp"
+            android:layout_height="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+        </ScrollView>
+    </LinearLayout>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
