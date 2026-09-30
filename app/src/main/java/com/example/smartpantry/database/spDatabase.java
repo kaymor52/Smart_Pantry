@@ -5,9 +5,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.example.smartpantry.RecipeResults_ScreenActivity;
-import com.example.smartpantry.RecipeResults_ScreenActivity.*;
 import com.example.smartpantry.PantryManagement.Ingredient;
+import com.example.smartpantry.RecipeResults_ScreenActivity;
+import com.example.smartpantry.RecipeResults_ScreenActivity.AlmostMatch;
 import com.example.smartpantry.SuggestedRecipesActivity;
 import com.example.smartpantry.SuggestedRecipesActivity.Recipe;
 

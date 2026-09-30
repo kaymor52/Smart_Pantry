@@ -151,8 +151,8 @@ public class PantryManagement extends AppCompatActivity {
 
                         for (Ingredient existingIngredient : existingIngredients) {
 
-                            if (existingIngredient.getName()
-                                    .equals(ingredient.getName())) {
+                            if (existingIngredient.getName().toLowerCase().trim()
+                                    .equals(ingredient.getName().toLowerCase().trim())) {
 
                                 message.setText(
                                         "Ingredient already exists, edit existing ingredient"
